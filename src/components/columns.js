@@ -1,13 +1,13 @@
-export cost COLUMNS = [{
+export const COLUMNS = [{
         Header: 'Name',
-        accessor 'name'
+        accessor: 'name',
     },
     {
         Header: 'Counts',
-        accessor 'count_pub'
+        accessor: 'count_pub',
     },
     {
         Header: 'Views',
-        accessor 'pageviews'
+        accessor: 'pageviews',
     }
 ]
