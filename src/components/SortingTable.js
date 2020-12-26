@@ -17,6 +17,8 @@ export const SortingTable = () => {
     previousPage,
     canNextPage,
     canPreviousPage,
+    pageOptions,
+    state,
     prepareRow,
   } = useTable({
     columns,
@@ -24,16 +26,19 @@ export const SortingTable = () => {
   },
   useSortBy,
   usePagination) 
+  
+  const { pageIndex } = state;
 
   return (
     <>
+    
       <table {...getTableProps()}>
         <thead>
           {headerGroups.map(headerGroup => (
             <tr {...headerGroup.getHeaderGroupProps()}>
               {headerGroup.headers.map(column => (
                 <th {...column.getHeaderProps(column.getSortByToggleProps())}>{column.render('Header')}
-                <span>{column.isSorted ? (column.isSortedDesc ? 'v' : '^') : ''} </span></th>
+                <span>{column.isSorted ? (column.isSortedDesc ? ' v' : ' ^') : ''} </span></th>
               ))}
             </tr>
           ))}
@@ -53,6 +58,12 @@ export const SortingTable = () => {
       </table>
       <div>
         <button onClick={() => previousPage()} disabled={!canPreviousPage}>Previous</button>
+            <span>
+                Page{' '}
+                <strong>
+                    {pageIndex + 1} of {pageOptions.length}
+                </strong>{' '}
+            </span>
         <button onClick={() => nextPage()} disabled={!canNextPage}>Next</button>
       </div>
     </>
