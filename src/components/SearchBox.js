@@ -1,11 +1,14 @@
-import React from 'react';
+import  { useState } from 'react'
+import MOCK_DATA from './MOCK_DATA.json'
 
-const SearchBox = ({ searchField, searchChange}) => {
-    return (
-        <div className="pa2">
-        <input className="pa3 ba b--green bg-lightest-blue" type="search" placeholder="search robots" onChange={searchChange}/>
-        </div>
-    );
-}
-
-export default SearchBox;
+export const SearchBox = () => {
+return (
+    <>
+    <div className="inputMaster">
+        <label htmlFor="userSearch"></label>
+        <input type="text" id="userSearch" onChange={(event) =>
+        setSearchTerm(event.target.value)}
+        />
+    </div>
+    </>
+)}
