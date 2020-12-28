@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import './App.css';
 import { SortingTable } from './components/SortingTable';
-import MOCK_DATA from './components/MOCK_DATA.json'
+import MOCK_DATA from './MOCK_DATA.json'
 
 
 function App() {
@@ -12,13 +12,13 @@ function App() {
       setSearchTerm(event.target.value)
     }} />
     {MOCK_DATA.filter(val => {
-      if (searchTerm == ""){
+      if (searchTerm === ""){
         return val
       } else if (val.name.toLowerCase().includes(searchTerm.toLowerCase())){
         return val
       }
     }).map((val,key) => {
-      return <div className="user" key={key}>{val.name}</div>
+      return <div className="user">{`${key} ___` + val.name }</div>
     })}
     <SortingTable></SortingTable>
   </div>
